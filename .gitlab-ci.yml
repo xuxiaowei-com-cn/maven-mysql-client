@@ -8,6 +8,11 @@ docker-build:
     - docker:dind
   script:
     - VERSION=3.8.7-openjdk-18
+    - MYSQL_CLIENT_VERSION=8.0.33
+    - wget http://repo.mysql.com/yum/mysql-8.0-community/el/8/x86_64/mysql-community-common-$MYSQL_CLIENT_VERSION-1.el8.x86_64.rpm
+    - wget http://repo.mysql.com/yum/mysql-8.0-community/el/8/x86_64/mysql-community-client-plugins-$MYSQL_CLIENT_VERSION-1.el8.x86_64.rpm
+    - wget http://repo.mysql.com/yum/mysql-8.0-community/el/8/x86_64/mysql-community-libs-$MYSQL_CLIENT_VERSION-1.el8.x86_64.rpm
+    - wget http://repo.mysql.com/yum/mysql-8.0-community/el/8/x86_64/mysql-community-client-$MYSQL_CLIENT_VERSION-1.el8.x86_64.rpm
     - docker build -t maven-mysql-client:$VERSION .
     - docker images
     - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
