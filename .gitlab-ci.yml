@@ -1,0 +1,16 @@
+stages:
+  - docker-build
+
+docker-build:
+  stage: docker-build
+  image: docker:latest
+  services:
+    - docker:dind
+  script:
+    - VERSION=3.6.3-jdk-8
+    - docker build -t maven-mysql-client:$VERSION .
+    - docker images
+    - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
+    - docker tag maven-mysql-client:$VERSION $DOCKER_USERNAME/maven-mysql-client:$VERSION
+    - docker images
+    - docker push $DOCKER_USERNAME/maven-mysql-client:$VERSION
