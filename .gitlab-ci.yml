@@ -7,7 +7,7 @@ docker-build:
   services:
     - docker:dind
   script:
-    - VERSION=3.6.3-jdk-8
+    - VERSION=3.6.3-openjdk-17
     - docker build -t maven-mysql-client:$VERSION .
     - docker images
     - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
