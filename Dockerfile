@@ -10,5 +10,6 @@ RUN echo "deb https://repo.mysql.com/apt/debian/ buster mysql-8.0" >> /etc/apt/s
     && apt-get update -o Acquire::AllowInsecureRepositories=true \
     # 安装 mysql-client
     && apt-get install -y --allow-unauthenticated mysql-client \
+    && mysql --version \
     # 清空缓存
     && apt-get clean
