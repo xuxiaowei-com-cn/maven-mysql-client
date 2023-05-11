@@ -1,5 +1,5 @@
 # 选择运行时基础镜像
-FROM maven:3.6.3-jdk-8
+FROM maven:3.8.7-openjdk-18
 
 # 维护人员
 MAINTAINER 徐晓伟 xuxiaowei@xuxiaowei.com.cn
